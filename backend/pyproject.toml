@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "bar_backend"
+version = "0.1.0"
+description = "FastAPI Backend for Bug Amelioration Routine web app"
+authors = ["Trevor Danahy"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+fastapi = "^0.63.0"
+uvicorn = "^0.13.4"
+fastapi-login = "^1.5.3"
+databases = "^0.4.3"
+
+[tool.poetry.dev-dependencies]
+black = "^20.8b1"
+flake8 = "^3.9.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
