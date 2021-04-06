@@ -1,12 +1,16 @@
 from fastapi import FastAPI
 from motor.motor_asyncio import AsyncIOMotorClient
 from apps.users.routes import router as user_router
+from urllib.parse import quote
+import os
 
-
+#FastAPI Class setup
 app = FastAPI()
 app.include_router(user_router, tags=["Auth"])
 
-mongo_uri = "mongodb://mongoadmin:devpassword@localhost:27017"
+db_user = quote(os.environ.get("DB_USER"))
+db_pass = quote(os.environ.get("DB_PASS"))
+mongo_uri = f"mongodb://{db_user}:{db_pass}@localhost:27017"
 
 
 @app.on_event("startup")
