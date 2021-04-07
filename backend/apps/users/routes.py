@@ -3,12 +3,13 @@ from fastapi.encoders import jsonable_encoder
 from fastapi_login import LoginManager
 from datetime import timedelta
 from passlib.hash import bcrypt
-import jwt
 from .models import User
+from config import jwt_secret
+import jwt
 
-router = APIRouter()
 
-jwt_secret = "167e849c6b79422c6a29bad9bde29f4eb20dfa4004a56483"
+router = APIRouter(prefix="/user", tags=["Auth"])
+
 token_cookie_name = "access-token"
 
 credentials = LoginManager(

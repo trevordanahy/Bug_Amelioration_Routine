@@ -1,24 +1,37 @@
-from pydantic import BaseModel, Optional
+from typing import Optional
+from pydantic import BaseModel, Field
 from datetime import datetime
+import uuid
 
-
-class Entry(BaseModel):
+# Model used to log bugs
+class BugIn(BaseModel):
     id: str = Field(default_factory=uuid.uuid4, alias="_id")
-    created: str
-    fixed: Optional[str]
+    created_date: str = datetime.utcnow().strftime("%m/%d/%Y, %H:%M:%S")
+    language: str
     error_type: str
-    note: Optional[str]
     init_code: str
-    fixed_code: Optional[str]
-
-    def set_date():
-        now = datetime.now()
-        return now
+    owner: Optional[str]
 
     class Config:
         allow_population_by_field_name = True
         schema_extra = {
             "example": {
-                "created": "2021-04-05 15:22:25.218556",
+                "error_type": "SyntaxError",
+                "init_code": "{item1: 'banana' item2: 'apple'}",
+            }
+        }
+
+
+# Model to used in fixed endpoints
+class BugFix(BaseModel):
+    fixed_date: str = datetime.utcnow().strftime("%m/%d/%Y, %H:%M:%S")
+    fixed_code: str
+    explanation: str
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "fixed_code": "{item1: 'banana', item2: 'apple'}",
+                "explanation": "I missed a comma on a dict item",
             }
         }
