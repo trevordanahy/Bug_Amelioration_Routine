@@ -1,9 +1,9 @@
 import React from 'react'
 import Titlebar from './Titlebar'
 
-function App () {
+function App() {
   return (
-    <Titlebar />
+    "Home World"
   )
 }
 
