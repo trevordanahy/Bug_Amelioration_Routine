@@ -9,7 +9,7 @@ run.sh
 
 #Frontend
 # dependencies
-/node_modules
+frontend/node_modules*
 /.pnp
 .pnp.js
 
@@ -18,6 +18,9 @@ run.sh
 
 # production
 /build
+
+#Editor
+.vscode*
 
 # misc
 .DS_Store
