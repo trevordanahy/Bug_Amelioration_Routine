@@ -39,7 +39,6 @@ async def auth_user(email: str, password: str, request: Request):
         return False
     if not bcrypt.verify(password, user["password"]):
         return False
-    print(user["_id"])
     return user["_id"]
 
 
@@ -95,7 +94,6 @@ async def logout(response: Response):
 
 @router.get("/me")
 async def user(request: Request, user=Depends(credentials)):
-    print(user)
     me = await request.app.mongodb["users"].find_one({"_id": user})
     username = me["username"]
     return {"username": username}
