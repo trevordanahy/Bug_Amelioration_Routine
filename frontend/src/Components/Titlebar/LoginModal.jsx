@@ -79,6 +79,6 @@ export default function LoginModal ({ open, setOpen, checkUser }) {
         </Content>
       </Background>
     </div>,
-    document.getElementById('portal')
+    document.getElementById('modalPortal')
   )
 }
