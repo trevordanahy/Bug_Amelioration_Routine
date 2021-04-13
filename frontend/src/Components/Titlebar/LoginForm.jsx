@@ -13,10 +13,11 @@ const InputLabel = styled.label`
 `
 
 const LoginBttn = styled.button`
-  color: white;
+  color: #DCD7CB;
   background: #5E809A;
   height: 40px;
   width: 80px;
+  margin: 10px;
 `
 
 export default function LoginForm ({ checkUser }) {

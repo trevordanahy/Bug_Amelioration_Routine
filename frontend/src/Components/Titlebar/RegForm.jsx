@@ -16,6 +16,7 @@ const RegistrationBttn = styled.button`
   background: #5E809A;
   height: 40px;
   width: 80px;
+  margin: 10px;
 `
 
 export default function RegForm ({ switchToLogin }) {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import LoginModal from './LoginModal'
+import LogoutBttn from './LogoutBttn'
 
 const url = 'http://localhost:8000/user/me'
 
@@ -14,16 +15,7 @@ const LoginBttn = styled.button`
   right: 20px;
 `
 
-const UserDiv = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-`
-
 const DisplayUser = styled.h3`
-  justify-self: center;
   color: #DCD7CB;
 `
 
@@ -58,8 +50,9 @@ export default function UserBox () {
     )
   }
   return (
-    <UserDiv>
+    <>
       <DisplayUser>{user}</DisplayUser>
-    </UserDiv>
+      <LogoutBttn checkUser={checkUser} />
+    </>
   )
 }
