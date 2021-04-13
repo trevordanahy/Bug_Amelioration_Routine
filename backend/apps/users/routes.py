@@ -1,9 +1,10 @@
 from fastapi import APIRouter, Depends, Request, Response, Body, HTTPException
 from fastapi.encoders import jsonable_encoder
+from fastapi.security import OAuth2PasswordRequestForm
 from fastapi_login import LoginManager
 from datetime import timedelta
 from passlib.hash import bcrypt
-from .models import User
+from .models import User, UserIn
 from config import jwt_secret
 import jwt
 
@@ -42,7 +43,7 @@ async def auth_user(email: str, password: str, request: Request):
 
 
 # User Routes
-@router.post("/register/", status_code=201)
+@router.post("/register", status_code=201)
 async def create_user(request: Request, user: User):
     existing = await request.app.mongodb["users"].find_one({"email": user.email})
     if existing:
@@ -58,9 +59,11 @@ async def create_user(request: Request, user: User):
     return {"msg": "success"}
 
 
-@router.post("/login/")
-async def login(email: str, password: str, request: Request, response: Response):
-    user_id = await auth_user(email, password, request)
+@router.post("/login")
+async def login(request: Request, response: Response, user: UserIn):
+    user_id = await auth_user(user.email, user.password, request)
+    if not user_id:
+        return {"err": "Login incorrect, please try again."}
     expiration = set_duration_days(5)
 
     payload = {"sub": user_id}
@@ -75,6 +78,7 @@ async def login(email: str, password: str, request: Request, response: Response)
         )
     except:
         return {"cookie error": "fuck"}
+
     return {"msg": "success"}
 
 
@@ -85,3 +89,10 @@ async def logout(response: Response):
     except:
         return {"error": "cookie error"}
     return {"msg": "success"}
+
+
+@router.get("/me")
+async def user(request: Request, user=Depends(credentials)):
+    me = await request.app.mongodb["users"].find_one({"_id": user})
+    username = me["username"]
+    return {"username": username}

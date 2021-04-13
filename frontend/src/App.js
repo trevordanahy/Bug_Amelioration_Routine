@@ -1,9 +1,11 @@
 import React from 'react'
-import Titlebar from './Titlebar'
+import Titlebar from './Components/Titlebar/Titlebar'
 
 function App() {
   return (
-    "Home World"
+    <>
+      <Titlebar />
+    </>
   )
 }
 
