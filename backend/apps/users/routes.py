@@ -43,7 +43,7 @@ async def auth_user(email: str, password: str, request: Request):
 
 
 # User Routes
-@router.post("/register/", status_code=201)
+@router.post("/register", status_code=201)
 async def create_user(request: Request, user: User):
     existing = await request.app.mongodb["users"].find_one({"email": user.email})
     if existing:
@@ -59,12 +59,11 @@ async def create_user(request: Request, user: User):
     return {"msg": "success"}
 
 
-@router.post("/login/")
+@router.post("/login")
 async def login(request: Request, response: Response, user: UserIn):
     user_id = await auth_user(user.email, user.password, request)
-    print(user_id)
     if not user_id:
-        return {"msg": "fail"}
+        return {"err": "Login incorrect, please try again."}
     expiration = set_duration_days(5)
 
     payload = {"sub": user_id}
