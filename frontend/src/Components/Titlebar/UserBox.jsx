@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import LoginModal from './LoginModal'
-// import LoginForm from './LoginForm'
 
 const url = 'http://localhost:8000/user/me'
 
@@ -10,10 +9,25 @@ const LoginBttn = styled.button`
   background-color: #1E1E21;
   color: #DCD7CB;
   border: #1E1E21;
-  border-radius: 3px;
+  border-radius: 15px;
+  flex-grow: .5;
+  right: 20px;
 `
 
-export default function User() {
+const UserDiv = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+`
+
+const DisplayUser = styled.h3`
+  justify-self: center;
+  color: #DCD7CB;
+`
+
+export default function UserBox () {
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState('')
   const [isOpen, setIsOpen] = useState(false)
@@ -39,13 +53,13 @@ export default function User() {
     return (
       <>
         <LoginBttn onClick={launchModal}>Login</LoginBttn>
-        <LoginModal open={isOpen} checkUser={checkUser} onClose={() => setIsOpen(false)} />
+        <LoginModal open={isOpen} setOpen={setIsOpen} checkUser={checkUser} />
       </>
     )
   }
   return (
-    <div>
-      <h3>{user}</h3>
-    </div>
+    <UserDiv>
+      <DisplayUser>{user}</DisplayUser>
+    </UserDiv>
   )
 }
