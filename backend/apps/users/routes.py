@@ -48,9 +48,14 @@ def create_token(user_id, expire_time):
     try:
         expiration = set_duration_days(expire_time)
         payload = {"sub": user_id}
-        token = credentials.create_access_token(data=payload, expires=expiration["jwt"])
+        token_value = credentials.create_access_token(
+            data=payload, expires=expiration["jwt"]
+        )
+        token = {"value": token_value, "expiration": expiration["cookie"]}
     except:
         raise HTTPException(status_code=400, detail="Unable to create token")
+    else:
+        return token
 
 
 # User Routes
@@ -75,19 +80,21 @@ async def create_user(request: Request, user: User):
 
 @router.post("/login", status_code=200)
 async def login(request: Request, response: Response, user: UserIn):
-    # authenticate
+    # authenticate, returns false if email/password invalid
     user_id = await auth_user(user.email, user.password, request)
     if not user_id:
-        raise HTTPException(status_code=401, detail="Invalid")
+        raise HTTPException(status_code=401, detail="Invalid Credentials")
+
     # create jwt
-    create_token(user_id, token_expire_time)
+    token = create_token(user_id, token_expire_time)
+
     # set set auth cookie
     try:
         response.set_cookie(
             key=token_cookie_name,
-            value=token,
+            value=token["value"],
             httponly=True,
-            max_age=(expiration["cookie"]),
+            max_age=(token["expiration"]),
         )
     except:
         raise HTTPException(
@@ -102,7 +109,7 @@ async def logout(response: Response):
     try:
         response.delete_cookie(key=token_cookie_name)
     except:
-        raise HTTPException(status_code=400, detail="Unable to delete cookie")
+        raise HTTPException(status_code=400, detail="Error deleting cookie")
     else:
         return {"detail": "Logged Out"}
 
