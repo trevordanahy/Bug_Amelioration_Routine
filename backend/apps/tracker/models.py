@@ -16,6 +16,7 @@ class BugIn(BaseModel):
         allow_population_by_field_name = True
         schema_extra = {
             "example": {
+                "language": "Python",
                 "error_type": "SyntaxError",
                 "init_code": "{item1: 'banana' item2: 'apple'}",
             }

@@ -8,18 +8,21 @@ from .models import User, UserIn
 from config import jwt_secret
 import jwt
 
-
+# Router Setup
 router = APIRouter(prefix="/user", tags=["Auth"])
 
-token_cookie_name = "access-token"
 
+# Credentials Setup
+token_cookie_name = "access-token"
+token_expire_time = 5
 credentials = LoginManager(
     secret=jwt_secret, tokenUrl="/login/", use_cookie=True, use_header=False
 )
-
 credentials.cookie_name = token_cookie_name
 
 
+# Callback run when credentials used as dependency
+# Logic in fastapi-login library, Grabs cookie and decodes jwt value, returns user_id
 @credentials.user_loader
 async def query_user(user):
     return user
@@ -35,11 +38,19 @@ def set_duration_days(time_days: int):
 
 async def auth_user(email: str, password: str, request: Request):
     user = await request.app.mongodb["users"].find_one({"email": email})
-    if not user:
-        return False
-    if not bcrypt.verify(password, user["password"]):
+    if not user or not bcrypt.verify(password, user["password"]):
         return False
     return user["_id"]
+
+
+# creates jwt token, expire_time in days
+def create_token(user_id, expire_time):
+    try:
+        expiration = set_duration_days(expire_time)
+        payload = {"sub": user_id}
+        token = credentials.create_access_token(data=payload, expires=expiration["jwt"])
+    except:
+        raise HTTPException(status_code=400, detail="Unable to create token")
 
 
 # User Routes
@@ -48,27 +59,29 @@ async def create_user(request: Request, user: User):
     existing = await request.app.mongodb["users"].find_one({"email": user.email})
     if existing:
         raise HTTPException(
-            status_code=401, detail="User already exists, please sign in"
+            status_code=409, detail="User already exists, please sign in"
         )
+    try:
+        hashed_pass = bcrypt.hash(user.password)
+        user.password = hashed_pass
 
-    hashed_pass = bcrypt.hash(user.password)
-    user.password = hashed_pass
+        user = jsonable_encoder(user)
+        new_user = await request.app.mongodb["users"].insert_one(user)
+    except:
+        raise HTTPException(status_code=400, detail="Regestration Invalid")
+    else:
+        return {"detail": "User Created"}
 
-    user = jsonable_encoder(user)
-    new_user = await request.app.mongodb["users"].insert_one(user)
-    return {"msg": "success"}
 
-
-@router.post("/login")
+@router.post("/login", status_code=200)
 async def login(request: Request, response: Response, user: UserIn):
+    # authenticate
     user_id = await auth_user(user.email, user.password, request)
     if not user_id:
-        return {"err": "Login incorrect, please try again."}
-    expiration = set_duration_days(5)
-
-    payload = {"sub": user_id}
-    token = credentials.create_access_token(data=payload, expires=expiration["jwt"])
-
+        raise HTTPException(status_code=401, detail="Invalid")
+    # create jwt
+    create_token(user_id, token_expire_time)
+    # set set auth cookie
     try:
         response.set_cookie(
             key=token_cookie_name,
@@ -77,22 +90,29 @@ async def login(request: Request, response: Response, user: UserIn):
             max_age=(expiration["cookie"]),
         )
     except:
-        return {"cookie error": "fuck"}
+        raise HTTPException(
+            status_code=400, detail="Unable to set authorization cookie"
+        )
+    else:
+        return {"detail": "Logged In"}
 
-    return {"msg": "success"}
 
-
-@router.get("/logout")
+@router.get("/logout", status_code=200)
 async def logout(response: Response):
     try:
         response.delete_cookie(key=token_cookie_name)
     except:
-        return {"error": "cookie error"}
-    return {"msg": "success"}
+        raise HTTPException(status_code=400, detail="Unable to delete cookie")
+    else:
+        return {"detail": "Logged Out"}
 
 
-@router.get("/me")
+@router.get("/me", status_code=200)
 async def user(request: Request, user=Depends(credentials)):
-    me = await request.app.mongodb["users"].find_one({"_id": user})
-    username = me["username"]
-    return {"username": username}
+    try:
+        me = await request.app.mongodb["users"].find_one({"_id": user})
+        username = me["username"]
+    except:
+        raise HTTPException(status_code=404, detail="User not found")
+    else:
+        return {"username": username}
