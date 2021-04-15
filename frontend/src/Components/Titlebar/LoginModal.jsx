@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import LoginForm from './LoginForm'
 import RegForm from './RegForm'
 
+const axios = require('axios')
+
 const Background = styled.div`
     width: 100vw;
     height: 100vh;

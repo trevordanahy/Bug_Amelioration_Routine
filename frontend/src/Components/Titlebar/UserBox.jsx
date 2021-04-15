@@ -3,13 +3,11 @@ import styled from 'styled-components'
 import LoginModal from './LoginModal'
 import LogoutBttn from './LogoutBttn'
 
-const url = 'http://localhost:8000/user/me'
-
 const LoginBttn = styled.button`
   height: 30px;
   background-color: #1E1E21;
   color: #DCD7CB;
-  border: #1E1E21;
+  font-weight: bold;
   border-radius: 15px;
   flex-grow: .5;
   right: 20px;
@@ -28,11 +26,24 @@ export default function UserBox () {
     setIsOpen(true)
   }
 
+  // Fetch is used instead of axios to allow 401 responses
   const checkUser = async () => {
+    const url = 'http://localhost:8000/user/me'
     const res = await fetch(url, { credentials: 'include' })
-    const userData = await res.json()
-    setUser(userData.username)
-    setLoading(false)
+      .then((res) => {
+        if (res.status === 401) {
+          setLoading(false)
+          return res
+        }
+        return res
+      })
+      .catch((err) => console.log(err))
+
+    const res_json = await res.json()
+      .then((res_json) => {
+        setUser(res_json.username)
+        setLoading(false)
+      }).catch((err) => console.log(err))
   }
 
   useEffect(() => {
