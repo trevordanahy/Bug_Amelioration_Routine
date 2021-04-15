@@ -26,6 +26,7 @@ export default function UserBox () {
     setIsOpen(true)
   }
 
+  // Fetch is used instead of axios to allow 401 responses
   const checkUser = async () => {
     const url = 'http://localhost:8000/user/me'
     const res = await fetch(url, { credentials: 'include' })
