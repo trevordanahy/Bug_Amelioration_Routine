@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react'
 import styled from 'styled-components'
 
+const axios = require('axios')
+
 const ErrorMsg = styled.p`
   color: red;
   font-size: 12px;
@@ -48,25 +50,23 @@ export default function RegForm ({ switchToLogin }) {
       password: iPassword
     }
 
-    const res = await fetch(url, {
-      method: 'POST',
-      body: JSON.stringify(postData),
-      credentials: 'include'
-    })
-
-    const result = await res.json()
-
-    emailRef.current.value = ''
-    usernameRef.current.value = ''
-    passwordRef.current.value = ''
-    confPasswordRef.current.value = ''
-
-    if (result.detail) {
-      returnError(result.detail)
-      return null
-    }
-
-    switchToLogin()
+    const res = await axios.post(url, postData, { withCredentials: true })
+      .then((res) => {
+        if (res.status === 201) {
+          emailRef.current.value = ''
+          usernameRef.current.value = ''
+          passwordRef.current.value = ''
+          confPasswordRef.current.value = ''
+          switchToLogin()
+        }
+      })
+      .catch((err) => {
+        if (err.response.status === 409) {
+          returnError(err.response.data.detail)
+        } else {
+          console.log(err.message)
+        }
+      })
   }
 
   return (

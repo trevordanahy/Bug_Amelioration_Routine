@@ -8,6 +8,7 @@ const TitlebarContainer = styled.div`
   background: #752826;
   color: #DCD7CB;
   border-radius: 0px 0px 5px 5px;
+  border-bottom: 3px solid black;
   display: grid;
   grid-template-columns: 10% 82% 8%;
   justify-items: center;
@@ -37,7 +38,7 @@ export default function Titlebar () {
     <>
       <TitlebarContainer>
         <Logo src='#' />
-        <PageTitle>Bug Amelioration Routine</PageTitle>
+        <PageTitle>The Bug Amelioration Routine</PageTitle>
         <UserDiv>
           <UserBox />
         </UserDiv>

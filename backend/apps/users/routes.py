@@ -83,7 +83,7 @@ async def login(request: Request, response: Response, user: UserIn):
     # authenticate, returns false if email/password invalid
     user_id = await auth_user(user.email, user.password, request)
     if not user_id:
-        raise HTTPException(status_code=401, detail="Invalid Credentials")
+        raise HTTPException(status_code=401, detail="Invalid credentials")
 
     # create jwt
     token = create_token(user_id, token_expire_time)

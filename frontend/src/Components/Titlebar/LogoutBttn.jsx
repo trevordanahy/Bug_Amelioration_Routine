@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+const axios = require('axios')
+
 const Button = styled.button`
   width: 80%;
   color: #DCD7CB;
@@ -11,9 +13,8 @@ export default function LogoutBttn ({ checkUser }) {
   const url = 'http://localhost:8000/user/logout'
 
   async function Logout () {
-    const res = await fetch(url, { credentials: 'include' })
-    const result = await res.json()
-    console.log(result)
+    const res = await axios.get(url, { withCredentials: true })
+      .catch((err) => console.log(err))
 
     checkUser()
   }

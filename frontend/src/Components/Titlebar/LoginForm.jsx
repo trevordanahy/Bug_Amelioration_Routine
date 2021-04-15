@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react'
 import styled from 'styled-components'
 
+const axios = require('axios')
+
 const ErrorMsg = styled.p`
   color: red;
   font-size: 12px;
@@ -35,18 +37,16 @@ export default function LoginForm ({ checkUser }) {
     const inputPassword = passwordRef.current.value
     const postData = { email: inputEmail, password: inputPassword }
 
-    const res = await fetch(url, {
-      method: 'POST',
-      body: JSON.stringify(postData),
-      credentials: 'include'
-    })
-
-    const result = await res.json()
-
-    if (result.err) {
-      returnError(result.err)
-    }
-
+    const res = await axios.post(url, postData, { withCredentials: true })
+      .then((res) => console.log(res))
+      .catch((err) => {
+        if (err.response.status === 401) {
+          returnError(err.response.data.detail)
+        } else {
+          console.log(err.message)
+        }
+      })
+      .finally
     checkUser()
 
     emailRef.current.value = ''
