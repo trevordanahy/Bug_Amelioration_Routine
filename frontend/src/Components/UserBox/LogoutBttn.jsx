@@ -4,9 +4,10 @@ import styled from 'styled-components'
 const axios = require('axios')
 
 const Button = styled.button`
-  width: 80%;
   color: #DCD7CB;
   background: #1E1E21;
+  border-radius: 5px;
+  padding: 5px;
 `
 
 export default function LogoutBttn ({ checkLogin }) {
