@@ -22,7 +22,7 @@ const LoginBttn = styled.button`
   margin: 10px;
 `
 
-export default function LoginForm ({ checkUser }) {
+export default function LoginForm ({ checkLogin }) {
   const url = 'http://localhost:8000/user/login'
   const emailRef = useRef('')
   const passwordRef = useRef('')
@@ -37,20 +37,19 @@ export default function LoginForm ({ checkUser }) {
     const inputPassword = passwordRef.current.value
     const postData = { email: inputEmail, password: inputPassword }
 
-    const res = await axios.post(url, postData, { withCredentials: true })
-      .then((res) => console.log(res))
+    axios.post(url, postData, { withCredentials: true })
+      .then(() => {
+        checkLogin()
+      })
       .catch((err) => {
         if (err.response.status === 401) {
           returnError(err.response.data.detail)
-        } else {
-          console.log(err.message)
         }
       })
-      .finally
-    checkUser()
-
-    emailRef.current.value = ''
-    passwordRef.current.value = ''
+      .finally(
+        emailRef.current.value = '',
+        passwordRef.current.value = ''
+      )
   }
 
   return (

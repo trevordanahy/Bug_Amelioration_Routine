@@ -2,9 +2,7 @@ import React, { useState, useRef } from 'react'
 import ReactDom from 'react-dom'
 import styled from 'styled-components'
 import LoginForm from './LoginForm'
-import RegForm from './RegForm'
-
-const axios = require('axios')
+import RegistrationForm from './RegistrationForm'
 
 const Background = styled.div`
     width: 100vw;
@@ -50,7 +48,7 @@ const Form = styled.div`
   border-style: solid;
 `
 
-export default function LoginModal ({ open, setOpen, checkUser }) {
+export default function LoginModal ({ open, setOpen, checkLogin }) {
   const backgroundRef = useRef()
   const [isLoginForm, setIsLoginForm] = useState(true)
 
@@ -75,8 +73,8 @@ export default function LoginModal ({ open, setOpen, checkUser }) {
           </FormSelect>
           <Form>
             {isLoginForm
-              ? (<LoginForm checkUser={checkUser} />)
-              : (<RegForm checkUser={checkUser} switchToLogin={switchToLogin} />)}
+              ? (<LoginForm checkLogin={checkLogin} />)
+              : (<RegistrationForm switchToLogin={switchToLogin} />)}
           </Form>
         </Content>
       </Background>

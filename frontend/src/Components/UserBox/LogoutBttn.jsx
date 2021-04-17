@@ -9,14 +9,17 @@ const Button = styled.button`
   background: #1E1E21;
 `
 
-export default function LogoutBttn ({ checkUser }) {
+export default function LogoutBttn ({ checkLogin }) {
   const url = 'http://localhost:8000/user/logout'
 
   async function Logout () {
-    const res = await axios.get(url, { withCredentials: true })
+    axios.get(url, { withCredentials: true })
+      .then((res) => {
+        if (res.status === 200) {
+          checkLogin()
+        }
+      })
       .catch((err) => console.log(err))
-
-    checkUser()
   }
 
   return (
