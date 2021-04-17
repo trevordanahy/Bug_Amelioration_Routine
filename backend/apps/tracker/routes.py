@@ -2,7 +2,6 @@ from fastapi import APIRouter, Request, Depends, HTTPException
 from fastapi.encoders import jsonable_encoder
 from ..users.routes import credentials
 from .models import BugIn, BugFix
-import sys
 
 router = APIRouter(prefix="/journal", tags=["Journal"])
 
@@ -33,9 +32,7 @@ async def get_buglist(request: Request, user=Depends(credentials)):
         ):
             bug_list.append(bug)
     except:
-        raise HTTPException(
-            status_code=404, detail=f"Couldn't Retrieve Bug List {sys.exc_info()[0]}"
-        )
+        raise HTTPException(status_code=404, detail="Couldn't Retrieve Bug List")
     else:
         return bug_list
 

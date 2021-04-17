@@ -50,7 +50,7 @@ export default function RegForm ({ switchToLogin }) {
       password: iPassword
     }
 
-    const res = await axios.post(url, postData, { withCredentials: true })
+    axios.post(url, postData, { withCredentials: true })
       .then((res) => {
         if (res.status === 201) {
           emailRef.current.value = ''
