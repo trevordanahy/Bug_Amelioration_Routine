@@ -1,18 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
+import BugLog from './BugLog'
 
-const StyledMain = styled.div`
+const StyledMain = styled.main`
   background: #DCD7CB;
   color: black;
-  height: 100%;
-  width: 100%;
+  flex-grow: 1;
   display: grid;
-  grid-template-columns: 70% 30%;
+  grid-template-columns: 60% 40%;
 `
 
 export default function Main ({ isLoggedIn, user }) {
   if (isLoggedIn === true) {
-    return (<StyledMain><p>{user}</p></StyledMain>)
+    return (<StyledMain><BugLog /></StyledMain>)
   }
 
   return (<StyledMain><p>Home World</p></StyledMain>)
