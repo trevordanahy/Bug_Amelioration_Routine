@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import BugLog from './BugLog'
 
 const StyledMain = styled.main`
-  background: #DCD7CB;
+  margin: 0;
+  background:white;
   color: black;
   flex-grow: 1;
   display: grid;
