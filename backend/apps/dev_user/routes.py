@@ -10,3 +10,9 @@ async def get_users(request: Request):
     for user in await request.app.mongodb["users"].find().to_list(length=50):
         users.append(user)
     return users
+
+
+@router.delete("/all_logs")
+async def delete_all_logs(request: Request):
+    deleted = await request.app.mongodb["bug_journal"].delete_many({})
+    return {"msg": "success"}
