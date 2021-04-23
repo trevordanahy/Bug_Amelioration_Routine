@@ -3,7 +3,7 @@ from fastapi.encoders import jsonable_encoder
 from ..users.routes import credentials
 from .models import BugIn, BugFix
 
-router = APIRouter(prefix="/journal", tags=["Journal"])
+router = APIRouter(prefix="/log", tags=["Log"])
 
 # Routes protected by credentials
 # credentails will return the user id if user is logged in
@@ -21,13 +21,13 @@ async def log_bug(request: Request, bug: BugIn, user=Depends(credentials)):
         return {"detail": "Bug logged"}
 
 
-@router.get("/buglist", status_code=200)
+@router.get("/buglog", status_code=200)
 async def get_buglist(request: Request, user=Depends(credentials)):
     try:
         bug_list = []
         for bug in (
             await request.app.mongodb["bug_journal"]
-            .find({"owner": user})
+            .find({"owner": user}, {"owner": 0})
             .to_list(length=50)
         ):
             bug_list.append(bug)

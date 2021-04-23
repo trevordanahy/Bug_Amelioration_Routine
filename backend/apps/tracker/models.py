@@ -7,8 +7,10 @@ import uuid
 class BugIn(BaseModel):
     id: str = Field(default_factory=uuid.uuid4, alias="_id")
     created_date: str = datetime.utcnow().strftime("%m/%d/%Y, %H:%M:%S")
+    app: str
     language: str
     error_type: str
+    is_fixed: bool
     init_code: str
     owner: Optional[str]
 
@@ -16,8 +18,10 @@ class BugIn(BaseModel):
         allow_population_by_field_name = True
         schema_extra = {
             "example": {
+                "app": "Resumio",
                 "language": "Python",
                 "error_type": "SyntaxError",
+                "is_fixed": False,
                 "init_code": "{item1: 'banana' item2: 'apple'}",
             }
         }
@@ -27,11 +31,13 @@ class BugIn(BaseModel):
 class BugFix(BaseModel):
     fixed_date: str = datetime.utcnow().strftime("%m/%d/%Y, %H:%M:%S")
     fixed_code: str
+    is_fixed: bool
     explanation: str
 
     class Config:
         schema_extra = {
             "example": {
+                "is_fixed": True,
                 "fixed_code": "{item1: 'banana', item2: 'apple'}",
                 "explanation": "I missed a comma on a dict item",
             }
