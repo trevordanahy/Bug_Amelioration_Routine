@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Header from '../style/Header'
 import MainStyles from '../style/MainStyles'
-import { checkLogin } from '../../adapters'
+import { getCurrentUser } from '../../adapters'
 import Titlebar from './Titlebar'
 import UserBox from './userBox/UserBox'
 import Main from './Main'
@@ -9,23 +9,24 @@ import Main from './Main'
 export default function DiffuseLoginStatus () {
   const [user, setUser] = useState('')
 
-  useEffect(() => {
-    async function checkLoginWrapper () {
-      const result = await checkLogin()
-      if (!result) {
-        setUser('')
-      } else {
-        setUser(result)
-      }
+  const checkLogin = async () => {
+    try {
+      const newUser = await getCurrentUser()
+      setUser(newUser)
+    } catch (err) {
+      console.log(err.message)
     }
-    checkLoginWrapper()
+  }
+
+  useEffect(() => {
+    checkLogin()
   }, [])
 
   return (
     <>
       <Header>
         <Titlebar />
-        <UserBox user={user} />
+        <UserBox user={user} checkLogin={checkLogin} />
       </Header>
       <MainStyles>
         <Main />

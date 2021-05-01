@@ -4,7 +4,7 @@ import { Background, Content, FormSelect, FormBttn, Form } from '../../style/use
 import LoginForm from './LoginForm'
 import RegistrationForm from './RegistrationForm'
 
-export default function LoginModal ({ isOpen, setIsOpen }) {
+export default function AuthModal ({ isOpen, setIsOpen, checkLogin }) {
   const backgroundRef = useRef()
   const [isLoginForm, setIsLoginForm] = useState(true)
 
@@ -29,7 +29,7 @@ export default function LoginModal ({ isOpen, setIsOpen }) {
           </FormSelect>
           <Form>
             {isLoginForm
-              ? (<LoginForm />)
+              ? (<LoginForm checkLogin={checkLogin} />)
               : (<RegistrationForm switchToLogin={switchToLogin} />)}
           </Form>
         </Content>

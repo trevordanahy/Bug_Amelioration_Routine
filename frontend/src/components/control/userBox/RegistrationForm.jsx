@@ -29,13 +29,16 @@ export default function RegistrationForm ({ switchToLogin }) {
 
     if (!formIsValid) {
       setError('Passwords do not match.')
+      return
     }
 
-    const result = register(postData)
-    if (result === 201) {
+    const result = await register(postData)
+    if (result.status === 201) {
       switchToLogin()
+    } else if (result.status === 409) {
+      setError(result.data)
     } else {
-      setError(result)
+      console.log(result.data)
     }
   }
 
