@@ -1,20 +1,28 @@
 import React, { useState } from 'react'
 import { UserBttn, DisplayUser } from '../../style/userBox/UserBoxStyles'
-import LoginModal from './AuthModal'
+import AuthModal from './AuthModal'
 import { logout } from '../../../adapters'
 
-export default function UserBox ({ user }) {
+export default function UserBox ({ user, checkLogin }) {
   const [isOpen, setIsOpen] = useState(false)
 
   const launchModal = () => {
     setIsOpen(true)
   }
 
+  const logoutPipe = async () => {
+    const result = await logout()
+    if (result.status === 'success') {
+      console.log('here')
+      checkLogin()
+    }
+  }
+
   if (user) {
     return (
       <div>
         <DisplayUser>{user}</DisplayUser>
-        <UserBttn onClick={logout}>Logout</UserBttn>
+        <UserBttn onClick={logoutPipe}>Logout</UserBttn>
       </div>
     )
   }
@@ -22,7 +30,7 @@ export default function UserBox ({ user }) {
   return (
     <div>
       <UserBttn onClick={launchModal}>Login</UserBttn>
-      <LoginModal isOpen={isOpen} setIsOpen={setIsOpen} />
+      <AuthModal isOpen={isOpen} setIsOpen={setIsOpen} checkLogin={checkLogin} />
     </div>
   )
 }
