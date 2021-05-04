@@ -16,6 +16,7 @@ export default function BugLog () {
     axios.get(bugLogUrl, { withCredentials: true })
       .then((res) => {
         const newLogs = res.data
+        console.log(newLogs)
         setLogs(newLogs)
       })
       .catch((err) => console.log(err.message))
@@ -27,11 +28,8 @@ export default function BugLog () {
         <SectionTitle>Logs</SectionTitle>
         <Log>
           {logs.map((entry) => {
-            return (
-              <Bug key={entry._id} entry={entry} />
-            )
-          }
-          )}
+            return (<Bug key={entry._id} entry={entry} />)
+          })}
         </Log>
       </LogContainer>
     </>
