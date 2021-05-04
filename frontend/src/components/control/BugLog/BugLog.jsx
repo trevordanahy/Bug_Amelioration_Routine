@@ -1,25 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import Bug from './Bug'
+import { getLogs } from '../../../adapters'
 import { LogContainer, SectionTitle, Log } from '../../style/BugLog/BugLogStyles'
 
-const axios = require('axios')
-
 export default function BugLog () {
-  const bugLogUrl = 'http://localhost:8000/log/buglog'
-  const [logs, setLogs] = useState([])
+  const [buglog, setBuglog] = useState([])
 
   useEffect(() => {
-    getLogs()
+    displayLog()
   }, [])
 
-  const getLogs = async () => {
-    axios.get(bugLogUrl, { withCredentials: true })
-      .then((res) => {
-        const newLogs = res.data
-        console.log(newLogs)
-        setLogs(newLogs)
-      })
-      .catch((err) => console.log(err.message))
+  const displayLog = async () => {
+    const buglog = await getLogs()
+    setBuglog(buglog.data)
   }
 
   return (
@@ -27,7 +20,7 @@ export default function BugLog () {
       <LogContainer>
         <SectionTitle>Logs</SectionTitle>
         <Log>
-          {logs.map((entry) => {
+          {buglog.map((entry) => {
             return (<Bug key={entry._id} entry={entry} />)
           })}
         </Log>
