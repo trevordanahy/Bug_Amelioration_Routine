@@ -8,7 +8,6 @@ import Main from './Main'
 
 export default function DiffuseLoginStatus () {
   const [user, setUser] = useState('')
-
   const checkLogin = async () => {
     try {
       const newUser = await getCurrentUser()
@@ -29,7 +28,7 @@ export default function DiffuseLoginStatus () {
         <UserBox user={user} checkLogin={checkLogin} />
       </Header>
       <MainStyles>
-        <Main />
+        <Main user={user} />
       </MainStyles>
     </>
   )

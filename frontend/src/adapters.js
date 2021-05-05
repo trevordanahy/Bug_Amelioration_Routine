@@ -1,10 +1,13 @@
 const axios = require('axios')
 
 // API Endpoints
-const meUrl = 'http://localhost:8000/user/me'
-const registerUrl = 'http://localhost:8000/user/register'
-const loginUrl = 'http://localhost:8000/user/login'
-const logoutUrl = 'http://localhost:8000/user/logout'
+const apiURL = 'http://localhost:8000/'
+const meUrl = apiURL + 'user/me'
+const registerUrl = apiURL + 'user/register'
+const loginUrl = apiURL + 'user/login'
+const logoutUrl = apiURL + 'user/logout'
+
+const buglogURL = apiURL + 'log/buglog'
 
 // CHECK LOGIN STATUS
 export const getCurrentUser = async () => {
@@ -27,24 +30,7 @@ export const register = async (postData) => {
     return { status: result.status, data: result.data.detail }
   } catch (err) {
     return { status: err.response.status, data: err.response.data.detail }
-    // if (err.response.status === 409) {
-    //   return { status: err.response.status, data: err.response.data.detail }
-    // } else {
-    //   console.log(err.message)
-    // }
   }
-
-  // axios.post(registerUrl, postData, )
-  //   .then((res) => {
-  //     return { status: 'success', data: res.response.status }
-  //   })
-  //   .catch((err) => {
-  //     if (err.response.status === 409) {
-  //       return { status: 'error', data: err.response.data.detail }
-  //     } else {
-  //       console.log(err.message)
-  //     }
-  //   })
 }
 
 // LOGIN
@@ -68,5 +54,14 @@ export const logout = async () => {
     return { status: 'success', data: result.status }
   } catch (err) {
     console.log(err.mes)
+  }
+}
+
+export const getLogs = async () => {
+  try {
+    const log = await axios.get(buglogURL, { withCredentials: true })
+    return log
+  } catch (err) {
+    console.log(err.response.data.detail)
   }
 }
