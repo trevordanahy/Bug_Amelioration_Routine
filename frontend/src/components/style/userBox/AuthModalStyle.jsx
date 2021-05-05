@@ -25,10 +25,10 @@ export const FormSelect = styled.div`
 `
 
 export const FormBttn = styled.button`
-  background-color: #752826;
+  background-color: #2B2D36;
   padding: 5px;
-  color: #DCD7CB;
-  border: #1E1E21;
+  color: #F9F9F8;
+  border: black;
   border-style: solid;
   `
 
@@ -38,8 +38,8 @@ export const Form = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #DCD7CB;
+  background-color: #F4ECE7;
   border-radius: 0px 0px 20px 20px;
-  border: #1E1E21;
+  border: black;
   border-style: solid;
 `

@@ -7,10 +7,10 @@ export const LogContainer = styled.div`
 `
 
 export const SectionTitle = styled.h1`
-  align-self: center;
-  margin: 5px 0px 0px 2px;
-  color: white;
-  background: #3B3B46;
+  align-self: left;
+  margin: 10px 0px 0px 40px;
+  color: ${props => props.theme.secondaryShade};
+  background: ${props => props.theme.mainShade};
    
 `
 

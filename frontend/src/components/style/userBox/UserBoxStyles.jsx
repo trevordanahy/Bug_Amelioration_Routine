@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 export const UserBttn = styled.button`
-  background-color: #1E1E21;
-  color: #DCD7CB;
+  background-color: #2B2D36;
+  color: #F9F9F8;
   font-weight: bold;
   border-radius: 5px;
   padding: 5px;
@@ -15,5 +15,5 @@ export const Button = styled.button`
 `
 
 export const DisplayUser = styled.h3`
-  color: #DCD7CB;
+  color: #2B2D36;
 `

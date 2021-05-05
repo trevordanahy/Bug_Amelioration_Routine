@@ -2,15 +2,7 @@ import React, { useEffect } from 'react'
 import Prism from 'prismjs'
 import 'prismjs/components/prism-python'
 import 'prismjs/themes/prism-vsc-dark-plus.css'
-import styled from 'styled-components'
-
-const CodeDiv = styled.div`
-  margin-bottom: 0;
-  border-radius: 5px 5px 5px 25px;
-`
-const CodePre = styled.pre`
-  border-radius: 5px 5px 5px 25px;
-`
+import { CodeDiv, CodePre } from '../../style/BugLog/CodeBlockStyles'
 
 export default function CodeBlock ({ code, language, showCode }) {
   useEffect(() => {

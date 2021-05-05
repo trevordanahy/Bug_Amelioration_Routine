@@ -9,9 +9,9 @@ export const Indicator = styled.div`
 
 export const Container = styled.div`
   margin: 10px 10px 15px;
-  background: ${props => props.showCode ? (props.status ? ' #124D25' : '#752826') : '#818797'};
-  color: ${showCode => showCode ? '#F4ECE7' : 'black'};
-  opacity: ${showCode => showCode ? 1 : 0.9};
+  background: ${props => props.showCode ? (props.status ? ' #124D25' : '#752826') : props.theme.main};
+  color: ${props => props.showCode ? '#F4ECE7' : 'black'};
+  opacity: ${props => props.showCode ? 1 : 0.9};
   border: 2px solid  black;
   border-radius: 25px 5px 5px 25px;
   box-shadow: 3px 3px 8px black;
@@ -19,6 +19,7 @@ export const Container = styled.div`
 
   &:hover {
     color: white;
+    background: ${props => props.status ? '#124D25' : '#752826'};
     transform: scale(1.02);
   }`
 

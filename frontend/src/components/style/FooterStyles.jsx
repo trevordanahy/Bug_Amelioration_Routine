@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const StyledFooter = styled.footer`
-  background: #752826;
+  background: ${props => props.theme.main};
   height: 60px;
   width: 100%;
   display:flex;
@@ -20,7 +20,7 @@ export const StyledUl = styled.ul`
 `
 
 export const StyledA = styled.a`
-  color: #DCD7CB;
+  color: #2B2D36;
   margin: 10px;
 `
 

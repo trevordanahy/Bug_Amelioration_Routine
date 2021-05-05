@@ -4,7 +4,6 @@ import { Container, BugBar, Indicator, BugTitle, DateCreated } from '../../style
 
 export default function Bug ({ entry }) {
   const [showCode, setShowCode] = useState(false)
-  console.log(entry.is_fixed)
 
   const displayCode = () => {
     setShowCode(!showCode)
