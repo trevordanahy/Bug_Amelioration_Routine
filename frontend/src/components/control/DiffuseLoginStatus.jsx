@@ -6,7 +6,7 @@ import Titlebar from './Titlebar'
 import UserBox from './userBox/UserBox'
 import Main from './Main'
 
-export default function DiffuseLoginStatus () {
+export default function DiffuseLoginStatus ({ theme, flipTheme }) {
   const [user, setUser] = useState('')
   const checkLogin = async () => {
     try {
@@ -16,6 +16,7 @@ export default function DiffuseLoginStatus () {
       console.log(err.message)
     }
   }
+  // console.log(`theme is ${theme.body}`)
 
   useEffect(() => {
     checkLogin()
@@ -25,6 +26,7 @@ export default function DiffuseLoginStatus () {
     <>
       <Header>
         <Titlebar />
+        <button onClick={flipTheme}>Theme</button>
         <UserBox user={user} checkLogin={checkLogin} />
       </Header>
       <MainStyles>
