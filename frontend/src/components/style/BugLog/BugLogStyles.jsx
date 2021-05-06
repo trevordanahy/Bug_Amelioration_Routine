@@ -23,6 +23,7 @@ export const Log = styled.div`
   margin: 5px;
   align-self: flex-end;
   width: 90%;
+  min-height: 70vh;
   background: #F4ECE7;
   border-color: #1b1b1b;
   border-style: solid;

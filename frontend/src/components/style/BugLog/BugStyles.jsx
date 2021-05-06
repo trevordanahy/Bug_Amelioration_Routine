@@ -25,9 +25,17 @@ export const Container = styled.div`
 
 export const BugBar = styled.div`
   display: grid;
-  grid-template-columns: 5% 80% 15%;
+  grid-template-columns: 5% 80% 10% 5%;
   justify-items: center;
   align-items: center;
+`
+
+export const BugDelete = styled.button`
+  height: 100%;
+  width: 100%;
+  background: #ac0404;
+  color: black;
+  font-size: 20px;
 `
 
 // will add styles later

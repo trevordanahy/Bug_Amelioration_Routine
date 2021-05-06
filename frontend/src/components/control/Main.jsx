@@ -4,7 +4,11 @@ import BugLog from './BugLog/BugLog'
 
 export default function Main ({ user }) {
   if (user) {
-    return (<BugLog />)
+    return (
+      <>
+        <BugLog />
+      </>
+    )
   }
 
   return (<StyledMain>Home World</StyledMain>)

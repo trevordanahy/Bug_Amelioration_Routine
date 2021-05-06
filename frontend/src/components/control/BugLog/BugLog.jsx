@@ -21,7 +21,7 @@ export default function BugLog () {
         <SectionTitle>Logs</SectionTitle>
         <Log>
           {buglog.map((entry) => {
-            return (<Bug key={entry._id} entry={entry} />)
+            return (<Bug key={entry._id} entry={entry} displayLog={displayLog} />)
           })}
         </Log>
       </LogContainer>
