@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import CodeBlock from './CodeBlock'
 import { Container, BugBar, Indicator, BugTitle, BugDelete, DateCreated } from '../../style/BugLog/BugStyles'
 import { deleteBug } from '../../../adapters'
+import BugCode from './BugCode'
 
 export default function Bug ({ entry, displayLog }) {
   const [showCode, setShowCode] = useState(false)
@@ -24,7 +24,7 @@ export default function Bug ({ entry, displayLog }) {
         <DateCreated>{entry.created_date}</DateCreated>
         <BugDelete onClick={bugDelete}><b>X</b></BugDelete>
       </BugBar>
-      <CodeBlock code={entry.init_code} language={entry.language} showCode={showCode} />
+      <BugCode entry={entry} showCode={showCode} />
     </Container>
   )
 }

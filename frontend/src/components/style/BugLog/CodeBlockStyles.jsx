@@ -7,3 +7,7 @@ export const CodeDiv = styled.div`
 export const CodePre = styled.pre`
   border-radius: 5px 5px 5px 25px;
 `
+export const Explanation = styled.div`
+  font-size: 16px;
+  margin: 15px 0px 3px 30px
+`
