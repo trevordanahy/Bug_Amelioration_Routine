@@ -3,6 +3,10 @@ import { Explanation } from '../../style/BugLog/CodeBlockStyles'
 import CodeBlock from './CodeBlock'
 
 export default function BugCode ({ entry, showCode }) {
+  if (showCode === false) {
+    return null
+  }
+
   if (entry.is_fixed) {
     return (
       <>

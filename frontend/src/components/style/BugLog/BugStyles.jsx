@@ -35,7 +35,7 @@ export const BugDelete = styled.button`
   width: 100%;
   background: #ac0404;
   color: black;
-  font-size: 20px;
+  font-size: px;
 `
 
 // will add styles later
