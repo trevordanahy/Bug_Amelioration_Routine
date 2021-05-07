@@ -8,6 +8,7 @@ const loginUrl = apiURL + 'user/login'
 const logoutUrl = apiURL + 'user/logout'
 
 const buglogURL = apiURL + 'log/buglog'
+const bugURL = apiURL + 'log/bug/'
 
 // CHECK LOGIN STATUS
 export const getCurrentUser = async () => {
@@ -63,5 +64,16 @@ export const getLogs = async () => {
     return log
   } catch (err) {
     console.log(err.response.data.detail)
+  }
+}
+
+export const deleteBug = async (id) => {
+  try {
+    const url = bugURL + id
+    console.log(url)
+    const res = await axios.delete((bugURL + id), { withCredentials: true })
+    return res
+  } catch (err) {
+    console.log(console.log(err.message))
   }
 }

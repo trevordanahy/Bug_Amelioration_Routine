@@ -9,10 +9,6 @@ export default function CodeBlock ({ code, language, showCode }) {
     Prism.highlightAll()
   }, [showCode])
 
-  if (showCode === false) {
-    return null
-  }
-
   return (
     <CodeDiv className='Code'>
       <CodePre className={`language-${language.toLowerCase()}`}>
