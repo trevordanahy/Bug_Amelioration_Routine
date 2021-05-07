@@ -42,4 +42,6 @@ export const BugDelete = styled.button`
 export const BugTitle = styled.h3`
 `
 export const DateCreated = styled.h5`
+  text-align: right;
+  margin-right: 5px;
 `
