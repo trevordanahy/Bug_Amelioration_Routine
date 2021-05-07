@@ -6,7 +6,7 @@ import uuid
 # Model used to log bugs
 class BugIn(BaseModel):
     id: str = Field(default_factory=uuid.uuid4, alias="_id")
-    created_date: str = datetime.utcnow().strftime("%m/%d/%Y, %H:%M:%S")
+    created_date: datetime = Field(default_factory=datetime.utcnow)
     app: str
     language: str
     error_type: str
