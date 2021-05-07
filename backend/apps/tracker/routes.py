@@ -56,7 +56,7 @@ async def log_bug_fix(
         return {"detail": "Bug Updated"}
 
 
-@router.delete("/bug/{bug_id}", status_code=204)
+@router.delete("/bug/{bug_id}", status_code=200)
 async def delete_bug(bug_id, request: Request, user=Depends(credentials)):
     try:
         result = await request.app.mongodb["bug_journal"].delete_one(
@@ -70,4 +70,4 @@ async def delete_bug(bug_id, request: Request, user=Depends(credentials)):
         if result.deleted_count < 1:
             raise HTTPException(status_code=404, detail="Bug not found check id")
 
-        return {"detail": "Bug Deleted"}
+        return {"detail": "Bug Deleted""%m/%d/%Y, %H:%M:%S"}

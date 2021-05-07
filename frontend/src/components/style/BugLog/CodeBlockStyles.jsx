@@ -9,5 +9,5 @@ export const CodePre = styled.pre`
 `
 export const Explanation = styled.div`
   font-size: 16px;
-  margin: 15px 0px 3px 30px
+  margin: 15px 0px 3px 30px;
 `
