@@ -77,3 +77,12 @@ export const deleteBug = async (id) => {
     console.log(console.log(err.message))
   }
 }
+
+export const logBug = async (postData) => {
+  try {
+    const result = await axios.post(bugURL, postData, { withCredentials: true })
+    return { status: 'success', data: result.data.detail }
+  } catch (err) {
+    console.log(err.message)
+  }
+}

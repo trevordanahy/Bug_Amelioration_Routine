@@ -33,7 +33,14 @@ export const LoggerInput = styled.input`
   align-self: center;
   width: 80%;
 `
+export const LoggerSelect = styled.select`
+  align-self: center;
+  width: 80%;
+`
+
 export const LoggerTextarea = styled.textarea`
+  white-space: nowrap;
+  overflow-x: scroll;
   align-self: center;
   width: 80%;
 `
@@ -45,4 +52,10 @@ export const EditorBttn = styled.button`
   align-self: center;
   grid-column-start: ${props => props.start};
   grid-column-end: span ${props => props.end};
+`
+
+export const ErrorMsg = styled.p`
+  color: red;
+  font-size: 12px;
+  font-weight: bold;
 `
