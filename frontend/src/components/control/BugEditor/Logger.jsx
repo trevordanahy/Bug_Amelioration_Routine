@@ -34,20 +34,18 @@ export default function Logger () {
     setBugIn({ ...bugIn, init_code: e.target.value })
   }
 
-  const validateBugIn = () => {
+  const validate = (object) => {
     let isValid = true
-    for (const [key, value] of Object.entries(bugIn)) {
-      if (value === '') {
-        isValid = false
-        return isValid
-      }
+    if (Object.values(object).includes('')) {
+      isValid = false
+      return isValid
     }
     return isValid
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!validateBugIn()) {
+    if (!validate(bugIn)) {
       setError('Please fill in every field')
       return
     }
