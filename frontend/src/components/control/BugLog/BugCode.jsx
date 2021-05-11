@@ -1,8 +1,9 @@
 import React from 'react'
+
 import { Explanation } from '../../style/BugLog/CodeBlockStyles'
 import CodeBlock from './CodeBlock'
 
-export default function BugCode ({ entry, showCode }) {
+export default function BugCode ({ entry, showCode, selectBug }) {
   if (showCode === false) {
     return null
   }
@@ -18,6 +19,9 @@ export default function BugCode ({ entry, showCode }) {
     )
   }
   return (
-    <CodeBlock code={entry.init_code} language={entry.language} showCode={showCode} />
+    <>
+      <CodeBlock entry={entry} showCode={showCode} selectBug={selectBug} />
+    </>
+
   )
 }

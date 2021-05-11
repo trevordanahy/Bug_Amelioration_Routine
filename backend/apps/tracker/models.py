@@ -29,7 +29,7 @@ class BugIn(BaseModel):
 
 # Model to used in fixed endpoints
 class BugFix(BaseModel):
-    fixed_date: str = datetime.utcnow().strftime("%m/%d/%Y, %H:%M:%S")
+    fixed_date: datetime = Field(default_factory=datetime.utcnow)
     fixed_code: str
     is_fixed: bool
     explanation: str

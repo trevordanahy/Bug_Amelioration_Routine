@@ -7,7 +7,7 @@ import BugCode from './BugCode'
 
 dayjs.extend(utc)
 
-export default function Bug ({ entry, displayLog }) {
+export default function Bug ({ entry, displayLog, selectBug }) {
   const [showCode, setShowCode] = useState(false)
 
   function formatDate (datetime) {
@@ -22,7 +22,7 @@ export default function Bug ({ entry, displayLog }) {
 
   const bugDelete = async () => {
     const res = await deleteBug(entry._id)
-    console.log(res)
+    console.log(res.data.detail)
     displayLog()
   }
 
@@ -38,7 +38,7 @@ export default function Bug ({ entry, displayLog }) {
         <DateCreated>{createdDate}</DateCreated>
         <BugDelete onClick={bugDelete}><b>X</b></BugDelete>
       </BugBar>
-      <BugCode entry={entry} showCode={showCode} />
+      <BugCode entry={entry} showCode={showCode} selectBug={selectBug} />
     </Container>
   )
 }

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const LogContainer = styled.div`
-  margin: 0px;
+  margin: 20px;
   display: flex;
   flex-direction: column;
 `
