@@ -14,6 +14,6 @@ export const Button = styled.button`
   padding: 5px;
 `
 
-export const DisplayUser = styled.h3`
+export const DisplayUser = styled.h2`
   color: #2B2D36;
 `

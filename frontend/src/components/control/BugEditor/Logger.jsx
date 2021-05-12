@@ -67,20 +67,20 @@ export default function Logger ({ displayLog }) {
       <ComponentTitle>Log New Bug</ComponentTitle>
       <EditorForm onSubmit={handleSubmit}>
         <Container start={0} end={2}>
-          <EditorLabel>App Name</EditorLabel>
-          <EditorInput type='text' onChange={handleAppNameChange} value={bugIn.app} />
+          <EditorLabel htmlFor='app'>App Name</EditorLabel>
+          <EditorInput id='app' type='text' onChange={handleAppNameChange} value={bugIn.app} />
         </Container>
         <Container justify='end'>
-          <EditorLabel>Language</EditorLabel>
-          <EditorSelect onChange={handleLanguageChange} value={bugIn.language}>
+          <EditorLabel htmlFor='language'>Language</EditorLabel>
+          <EditorSelect id='language' onChange={handleLanguageChange} value={bugIn.language}>
             <option />
             <option>Python</option>
             <option>Javascript</option>
           </EditorSelect>
         </Container>
         <Container justify='start'>
-          <EditorLabel>Error Type</EditorLabel>
-          <EditorSelect onChange={handleErrorTypeChange} value={bugIn.error_type}>
+          <EditorLabel htmlFor='error type'>Error Type</EditorLabel>
+          <EditorSelect id='error type' onChange={handleErrorTypeChange} value={bugIn.error_type}>
             <option />
             <option>Syntax Error</option>
             <option>Logical Error</option>
@@ -90,8 +90,8 @@ export default function Logger ({ displayLog }) {
           </EditorSelect>
         </Container>
         <Container start={0} end={2}>
-          <EditorLabel>Initial Code</EditorLabel>
-          <EditorTextarea rows='10' onChange={handleInitCode} value={bugIn.init_code} />
+          <EditorLabel htmlFor='initial code'>Initial Code</EditorLabel>
+          <EditorTextarea id='initial code' rows='10' onChange={handleInitCode} value={bugIn.init_code} />
         </Container>
         <Container start={0} end={2}>
           <ErrorMsg>{error}</ErrorMsg>
