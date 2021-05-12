@@ -1,9 +1,12 @@
 import React from 'react'
-
-import { Explanation } from '../../style/BugLog/CodeBlockStyles'
+import { Explanation, BugFixBttn } from '../../style/BugLog/CodeBlockStyles'
 import CodeBlock from './CodeBlock'
 
 export default function BugCode ({ entry, showCode, selectBug }) {
+  const handleFix = async () => {
+    selectBug(entry)
+  }
+
   if (showCode === false) {
     return null
   }
@@ -11,16 +14,21 @@ export default function BugCode ({ entry, showCode, selectBug }) {
   if (entry.is_fixed) {
     return (
       <>
-        <CodeBlock code={entry.init_code} language={entry.language} showCode={showCode} />
+        <CodeBlock fixed={false} entry={entry} showCode={showCode} />
         <Explanation>{entry.explanation}</Explanation>
-        <CodeBlock code={entry.fixed_code} language={entry.language} showCode={showCode} />
+        <CodeBlock fixed entry={entry} showCode={showCode} />
       </>
-
     )
   }
   return (
     <>
-      <CodeBlock entry={entry} showCode={showCode} selectBug={selectBug} />
+      <CodeBlock
+        entry={entry}
+        fixed={false}
+        showCode={showCode}
+        selectBug={selectBug}
+      />
+      <BugFixBttn onClick={handleFix}>Fix</BugFixBttn>
     </>
 
   )

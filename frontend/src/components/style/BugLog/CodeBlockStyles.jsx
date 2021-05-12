@@ -13,11 +13,11 @@ export const Explanation = styled.div`
   margin: 15px 0px 3px 30px;
 `
 export const BugFixBttn = styled.button`
-  margin: 0px 0px 10px 0px;
+  margin: 0px 30px 10px 30px;
   width: 100%;
   border-radius: 5px 5px 5px 5px;
   background: #124D25; /*${props => props.theme.mainShade};*/
   color: ${props => props.theme.secondaryShade};
-  font-size:20px;
+  font-size:18px;
   align-self: center;
 `

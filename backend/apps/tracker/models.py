@@ -29,9 +29,9 @@ class BugIn(BaseModel):
 
 # Model to used in fixed endpoints
 class BugFix(BaseModel):
-    fixed_date: datetime = Field(default_factory=datetime.utcnow)
+    fixed_date: Optional[datetime] = Field(default_factory=datetime.utcnow)
     fixed_code: str
-    is_fixed: bool
+    is_fixed: Optional[bool] = True
     explanation: str
 
     class Config:

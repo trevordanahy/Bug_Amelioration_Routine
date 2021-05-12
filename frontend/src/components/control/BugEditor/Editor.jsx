@@ -3,12 +3,20 @@ import { EditorStyle, SectionTitle } from '../../style/BugEditor/BugEditorStyles
 import Logger from './Logger'
 import Fixer from './Fixer'
 
-export default function Editor ({ displayLog }) {
+export default function Editor ({ displayLog, selectedBug, selectBug }) {
+  const handleLogNewBug = () => {
+    selectBug('')
+  }
+
   return (
     <EditorStyle>
       <SectionTitle>Editor</SectionTitle>
-      <Logger displayLog={displayLog} />
-      <Fixer />
+      {selectedBug
+        ? <>
+          <button onClick={handleLogNewBug}>Log New Bug</button>
+          <Fixer displayLog={displayLog} selectedBug={selectedBug} />
+          </>
+        : <Logger displayLog={displayLog} />}
     </EditorStyle>
   )
 }

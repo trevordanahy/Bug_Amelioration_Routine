@@ -28,7 +28,7 @@ export default function Main () {
   return (
     <>
       <BugLog buglog={buglog} displayLog={displayLog} selectBug={selectBug} />
-      <Editor displayLog={displayLog} selectedBug={selectedBug} />
+      <Editor displayLog={displayLog} selectedBug={selectedBug} selectBug={selectBug} />
     </>
   )
 }
