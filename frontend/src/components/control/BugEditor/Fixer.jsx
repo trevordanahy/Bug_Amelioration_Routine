@@ -37,12 +37,12 @@ export default function Fixer ({ displayLog, selectedBug }) {
       <ComponentTitle>Fix Bug</ComponentTitle>
       <EditorForm>
         <Container start={0} end={2}>
-          <EditorLabel>Fixed Code</EditorLabel>
-          <EditorTextarea rows='10' onChange={handleFixedCode} />
+          <EditorLabel htmlFor='fixed code'>Fixed Code</EditorLabel>
+          <EditorTextarea id='fixed code' rows='10' onChange={handleFixedCode} />
         </Container>
         <Container start={0} end={2}>
-          <EditorLabel rows={2}>Explanation</EditorLabel>
-          <EditorInput onChange={handleExplanation} />
+          <EditorLabel htmlFor='explanation' rows={2}>Explanation</EditorLabel>
+          <EditorInput id='explanation' onChange={handleExplanation} />
         </Container>
         <Container start={0} end={2}>
           <EditorBttn type='submit' onClick={handleApplyFix}>Apply Fix</EditorBttn>

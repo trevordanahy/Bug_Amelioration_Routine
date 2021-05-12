@@ -29,7 +29,7 @@ export default function Footer () {
         <StyledUl>{siteLinkList}</StyledUl>
       </LinkContainer>
       <ProfileContainer>
-        <a href='https://github.com/trevordanahy'><Profile src='#' /></a>
+        <a href='https://github.com/trevordanahy'><Profile src='#' alt='Link to personal Github page' /></a>
       </ProfileContainer>
     </StyledFooter>
   )

@@ -11,11 +11,9 @@ export default function Editor ({ displayLog, selectedBug, selectBug }) {
   return (
     <EditorStyle>
       <SectionTitle>Editor</SectionTitle>
+      {selectedBug ? <button onClick={handleLogNewBug}>Log New Bug</button> : null}
       {selectedBug
-        ? <>
-          <button onClick={handleLogNewBug}>Log New Bug</button>
-          <Fixer displayLog={displayLog} selectedBug={selectedBug} />
-          </>
+        ? <Fixer displayLog={displayLog} selectedBug={selectedBug} />
         : <Logger displayLog={displayLog} />}
     </EditorStyle>
   )

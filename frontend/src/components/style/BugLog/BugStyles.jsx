@@ -49,9 +49,11 @@ export const BugFix = styled.button`
 `
 
 // will add styles later
-export const BugTitle = styled.h3`
+export const BugTitle = styled.h1`
+  font-size: 20px;
 `
-export const DateCreated = styled.h5`
+export const DateCreated = styled.h1`
   text-align: right;
   margin-right: 5px;
+  font-size: 16px;
 `

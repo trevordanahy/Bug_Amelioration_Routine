@@ -32,7 +32,7 @@ export default function Bug ({ entry, displayLog, selectBug }) {
 
   return (
     <Container showCode={showCode} status={entry.is_fixed}>
-      <BugBar onClick={displayCode}>
+      <BugBar tabIndex={0} onClick={displayCode}>
         <Indicator status={entry.is_fixed} />
         <BugTitle>{`${entry.app} | ${entry.error_type} (${entry.language})`}</BugTitle>
         <DateCreated>{createdDate}</DateCreated>
