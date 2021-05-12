@@ -29,9 +29,7 @@ export default function DiffuseLoginStatus ({ theme, flipTheme }) {
         <button onClick={flipTheme}>Theme</button>
         <UserBox user={user} checkLogin={checkLogin} />
       </Header>
-      <MainStyles>
-        <Main user={user} />
-      </MainStyles>
+      {user ? <MainStyles><Main /></MainStyles> : <MainStyles>Home World</MainStyles>}
     </>
   )
 }

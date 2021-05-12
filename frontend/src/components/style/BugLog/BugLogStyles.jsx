@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 
 export const LogContainer = styled.div`
-  margin: 0px;
+  margin: 0px 20px 20px 20px;
   display: flex;
   flex-direction: column;
 `
 
 export const SectionTitle = styled.h1`
   align-self: left;
-  margin: 10px 0px 0px 40px;
+  margin: 10px 0px 10px 40px;
   color: ${props => props.theme.secondaryShade};
   background: ${props => props.theme.mainShade};
    

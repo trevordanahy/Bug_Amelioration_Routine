@@ -8,6 +8,8 @@ export const Indicator = styled.div`
 `
 
 export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
   margin: 10px 10px 15px;
   background: ${props => props.showCode ? (props.status ? ' #124D25' : '#752826') : props.theme.main};
   color: ${props => props.showCode ? '#F4ECE7' : 'black'};
@@ -36,6 +38,14 @@ export const BugDelete = styled.button`
   background: #ac0404;
   color: black;
   font-size: px;
+`
+export const BugFix = styled.button`
+  margin: 5px 0px 0px 0px;
+  width: 100%;
+  border-radius: 25px 5px 5px 25px;
+  background: ${props => props.theme.mainShade};
+  color: ${props => props.theme.secondaryShade};
+  align-self: center;
 `
 
 // will add styles later

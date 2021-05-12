@@ -70,4 +70,4 @@ async def delete_bug(bug_id, request: Request, user=Depends(credentials)):
         if result.deleted_count < 1:
             raise HTTPException(status_code=404, detail="Bug not found check id")
 
-        return {"detail": "Bug Deleted""%m/%d/%Y, %H:%M:%S"}
+        return {"detail": "Bug Deleted"}
