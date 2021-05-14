@@ -11,7 +11,7 @@ export const Container = styled.div`
 `
 
 export const Logo = styled.img`
-  height: 50px;
+  height: 100px;
   width: auto;
   align-self: center;
 `
