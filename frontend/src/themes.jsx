@@ -5,7 +5,8 @@ export const lightTheme = {
   secondaryShade: '#2B2D36',
   main: mainColor,
   mainAccent: '#8B8572',
-  secondaryAccent: '#856861'
+  secondaryAccent: '#856861',
+  theme: 'light'
 }
 
 export const darkTheme = {
@@ -13,7 +14,8 @@ export const darkTheme = {
   secondaryShade: '#F4ECE7',
   main: mainColor,
   mainAccent: '#8B8572',
-  secondaryAccent: '#856861'
+  secondaryAccent: '#856861',
+  theme: 'dark'
 }
 
 /*

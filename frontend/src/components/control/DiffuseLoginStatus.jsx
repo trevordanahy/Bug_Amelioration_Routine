@@ -5,6 +5,7 @@ import { getCurrentUser } from '../../adapters'
 import Titlebar from './Titlebar'
 import UserBox from './userBox/UserBox'
 import Main from './Main'
+import Homepage from './Homepage'
 
 export default function DiffuseLoginStatus ({ theme, flipTheme }) {
   const [user, setUser] = useState('')
@@ -29,7 +30,7 @@ export default function DiffuseLoginStatus ({ theme, flipTheme }) {
         <button onClick={flipTheme}>Theme</button>
         <UserBox user={user} checkLogin={checkLogin} />
       </Header>
-      {user ? <MainStyles><Main /></MainStyles> : <MainStyles>Home World</MainStyles>}
+      {user ? <MainStyles><Main /></MainStyles> : <MainStyles><Homepage /></MainStyles>}
     </>
   )
 }
