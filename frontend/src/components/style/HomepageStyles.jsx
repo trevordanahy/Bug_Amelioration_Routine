@@ -53,6 +53,7 @@ export const OffsetCard = styled.div`
   width: 70vw;
   background: ${props => props.theme.secondaryAccent};
   height: auto;
+  border: 2px solid black;
   border-radius: 15px;
   margin: 3px;
   align-self: center;
@@ -88,26 +89,36 @@ export const Graphic = styled.img`
 export const MainCard = styled.div`
   max-width: 60vw;
   background: ${props => props.theme.secondaryShade};
+  border: 2px solid black;
   border-radius: 15px;
+  box-shadow: 3px -5px 8px #2B2D36;
   margin-top: -1rem;
   align-self: center;
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-flow: row wrap;
 
   @media (min-width: 650px) {
     height: 90%;
     max-width: 40vw;
+    box-shadow: ${props => props.flip ? '3px' : '-3px'} -5px 5px #2B2D36;
     margin-top: 0;
     margin-left: ${props => props.flip ? 0 : '-1rem'};
   }
 `
 
 export const CardHeader = styled.h1`
+  width: 100%;
   margin: .5rem;
   font-weight: bold;
   font-size: 5vh;
+  text-decoration: underline;
+  
 `
 export const CardDescription = styled.p`
   margin: .25rem;
   font-size: 3vh;
-
+  align-self: center;
 `
