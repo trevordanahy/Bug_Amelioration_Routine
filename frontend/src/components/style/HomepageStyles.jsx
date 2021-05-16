@@ -21,7 +21,7 @@ export const HomepageHeader = styled.h1`
 `
 export const About = styled.p`
   margin: .25rem .5rem;
-  font-size: 5vh;
+  font-size: 1.5rem;
   width: 100vw;
 `
 export const CardList = styled.div`

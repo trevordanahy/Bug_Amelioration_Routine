@@ -11,8 +11,7 @@ import {
 
 const links = [
   { title: 'Home', address: '/home' },
-  { title: 'About', address: '/about' },
-  { title: 'My Personal Site', address: 'http://trevordanahy.dev' }
+  { title: 'Personal Site', address: 'http://trevordanahy.dev' }
 ]
 
 const siteLinkList = links.map((link) => {

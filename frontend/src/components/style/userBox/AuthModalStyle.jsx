@@ -10,11 +10,13 @@ export const Background = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 2;
 `
 
 export const Content = styled.div`
   max-height: auto;
   max-width: 50%;
+  min-width: 200px;
   position: relative;
 `
 
