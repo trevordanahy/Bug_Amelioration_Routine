@@ -51,7 +51,7 @@ export const CardContainer = styled.div`
 `
 export const OffsetCard = styled.div`
   width: 70vw;
-  background: ${props => props.theme.secondaryAccent};
+  background: ${props => props.theme.lightAccent};
   height: auto;
   border: 2px solid black;
   border-radius: 15px;

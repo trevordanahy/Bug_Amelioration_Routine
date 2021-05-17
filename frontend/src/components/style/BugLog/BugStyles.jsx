@@ -4,7 +4,9 @@ export const Indicator = styled.div`
   background: ${props => props.status ? '#124D25' : '#752826'};
   border-radius: 100%;
   width: 25px;
+  min-width: 25px;
   height: 25px;
+  min-height: 25;
   margin: .5em;
 `
 
@@ -12,10 +14,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   margin: 10px 10px 15px;
-  background: ${props => props.showCode ? (props.status ? ' #124D25' : '#752826') : props.theme.main};
-  color: ${props => props.showCode ? '#F4ECE7' : 'black'};
+  background: ${props => props.showCode ? (props.status ? ' #124D25' : '#752826') : props.theme.lightAccent};
+  color: ${props => props.showCode ? props.theme.lightShade : props.theme.darkShade};
   opacity: ${props => props.showCode ? 1 : 0.9};
-  border: 2px solid ${props => props.theme.secondaryShade};
+  border: 2px solid ${props => props.theme.darkShade};
   border-radius: 25px 5px 5px 25px;
   box-shadow: 3px 3px 8px black;
   transition: transform .5s, color .5s;
@@ -34,7 +36,7 @@ export const BugBar = styled.div`
   align-items: center;
 `
 export const BugTitle = styled.h1`
-  font-size: 1em;
+  font-size: 1.25em;
 `
 export const RightDiv = styled.div`
   display: flex;
@@ -46,18 +48,25 @@ export const DateCreated = styled.h1`
   text-align: right;
   margin: 0em .5em 0em 1em;
   font-size: 16px;
+
+  @media (max-width: 350px) {
+    display: none;
+  }
 `
 
 export const BugDelete = styled.button`
-  height: auto;
-  width: 1.5em;
+  height: 25px;
+  min-height: 25px;
+  width: 25px;
+  min-width: 25px;
   padding: .25em;
   border-radius: 100%;
   border-color: black;
-  background: #ac0404;
-  color: black;
+  background: ${props => props.theme.darkAccent};
+  color: ${props => props.theme.lightShade};
   font-size: 1.5m;
   margin-left: .5em;
+  margin-right: 3px;
 
 `
 export const BugFix = styled.button`

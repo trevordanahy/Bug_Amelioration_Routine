@@ -4,17 +4,22 @@ export const StyledHeader = styled.header`
   width: 100%;
   height: auto;
   background: ${props => props.theme.main};
-  color: black;
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid ${props => props.theme.mainShade};
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: flex-end;
+
+  @media (max-width: 350px) {
+    flex-flow: row wrap;
+    justify-content: flex-end;
+  }
 `
 
 export const PageTitle = styled.h1`
   margin: 15px;
   font-size: 2rem;
+  color: ${props => props.theme.lightShade};
 `
 
 export const ThemeBttn = styled.button`
@@ -37,4 +42,6 @@ export const ActionContainer = styled.div`
   display: flex;
   flex-flow: row nowrap;
   align-items: flex-end;
+
+
 `

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export default styled.main`
   margin: 0;
-  width: 100vw;
+  width: 100%;
   background: ${props => props.theme.mainShade};
   color: ${props => props.theme.secondaryShade};
   flex-grow: 1;

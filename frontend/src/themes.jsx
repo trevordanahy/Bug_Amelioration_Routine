@@ -1,25 +1,31 @@
-const mainColor = '#979DB9'
+const mainColor = '#571607'
+const lightShade = '#FFFEEB'
+const darkShade = '#090C0C'
+const lightAccent = '#D1D5DB'
+const darkAccent = '#154866'
 
 export const lightTheme = {
-  mainShade: '#F4ECE7',
-  secondaryShade: '#2B2D36',
+  mainShade: lightShade,
+  secondaryShade: darkShade,
+  mainAccent: lightAccent,
+  secondaryAccent: darkAccent,
   main: mainColor,
-  mainAccent: '#8B8572',
-  secondaryAccent: '#856861',
+  lightShade: lightShade,
+  darkShade: darkShade,
+  lightAccent: lightAccent,
+  darkAccent: darkAccent,
   theme: 'light'
 }
 
 export const darkTheme = {
-  mainShade: '#2B2D36',
-  secondaryShade: '#F4ECE7',
+  mainShade: darkShade,
+  secondaryShade: lightShade,
+  mainAccent: darkAccent,
+  secondaryAccent: lightAccent,
   main: mainColor,
-  mainAccent: '#8B8572',
-  secondaryAccent: '#856861',
+  lightShade: lightShade,
+  darkShade: darkShade,
+  lightAccent: lightAccent,
+  darkAccent: darkAccent,
   theme: 'dark'
 }
-
-/*
-C0A177
-979DB9
-EBB54F
-*/

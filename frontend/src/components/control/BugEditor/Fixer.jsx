@@ -3,12 +3,11 @@ import { fixBug } from '../../../adapters'
 import {
   ComponentDiv, ComponentTitle,
   EditorForm, EditorLabel,
-  EditorInput, Container,
-  EditorTextarea,
-  EditorBttn
+  Container, EditorTextarea,
+  EditorBttn, LogBugFormBttn
 } from '../../style/BugEditor/BugEditorStyles'
 
-export default function Fixer ({ displayLog, selectedBug }) {
+export default function Fixer ({ displayLog, selectedBug, selectBug }) {
   const [bugFix, setBugFix] = useState({
     fixed_code: '',
     explanation: ''
@@ -20,6 +19,11 @@ export default function Fixer ({ displayLog, selectedBug }) {
 
   const handleExplanation = (e) => {
     setBugFix({ ...bugFix, explanation: e.target.value })
+  }
+
+  const handleLogNewBug = (e) => {
+    e.preventDefault()
+    selectBug('')
   }
 
   const handleApplyFix = async (e) => {
@@ -42,11 +46,12 @@ export default function Fixer ({ displayLog, selectedBug }) {
         </Container>
         <Container start={0} end={2}>
           <EditorLabel htmlFor='explanation' rows={2}>Explanation</EditorLabel>
-          <EditorInput id='explanation' onChange={handleExplanation} />
+          <EditorTextarea id='explanation' onChange={handleExplanation} />
         </Container>
         <Container start={0} end={2}>
           <EditorBttn type='submit' onClick={handleApplyFix}>Apply Fix</EditorBttn>
         </Container>
+        <LogBugFormBttn onClick={handleLogNewBug}>Log New Bug</LogBugFormBttn>
       </EditorForm>
     </ComponentDiv>
   )

@@ -12,8 +12,8 @@ export const InputLabel = styled.label`
 `
 
 export const AuthBttn = styled.button`
-  color: #F9F9F8;
-  background: #2B2D36;
+  color: ${props => props.theme.lightShade};
+  background: ${props => props.theme.darkAccent};
   height: 40px;
   width: 80px;
   margin: 10px;

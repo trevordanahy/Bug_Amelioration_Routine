@@ -1,8 +1,8 @@
 import React from 'react'
-import LogBookGraphic from '../../img/logBook.svg'
-import DoWork from '../../img/DoWork.svg'
-import DiscoverBug from '../../img/DiscoverBug.svg'
+import WriteCode from '../../img/WriteCode.svg'
+import IdentifyBug from '../../img/IdentifyBug.svg'
 import FixBug from '../../img/FixBug.svg'
+import LogBook from '../../img/LogBook.svg'
 import Analyze from '../../img/Analyze.svg'
 import {
   HomepageDiv, HomepageHeader, About, Graphic, CardHeader,
@@ -10,6 +10,10 @@ import {
 } from '../style/HomepageStyles'
 
 export default function Homepage () {
+  /* Graphics come from undraw, below is list of graphic name to name on undraw
+    WriteCode = Programing
+
+    */
   return (
     <HomepageDiv>
       <HomepageHeader> Start Your Bug Journal Routine</HomepageHeader>
@@ -17,7 +21,7 @@ export default function Homepage () {
       <CardList>
         <CardContainer flip>
           <OffsetCard flip>
-            <Graphic src={DoWork} alt='Working Graphic' />
+            <Graphic src={WriteCode} alt='Writing Code Graphic' />
           </OffsetCard>
           <MainCard flip>
             <CardHeader>Write Code</CardHeader>
@@ -30,7 +34,7 @@ export default function Homepage () {
         </CardContainer>
         <CardContainer>
           <OffsetCard>
-            <Graphic src={DiscoverBug} alt='Discover Bug Graphic' />
+            <Graphic src={IdentifyBug} alt='Discover Bug Graphic' />
           </OffsetCard>
           <MainCard>
             <CardHeader>Identify a Bug</CardHeader>
@@ -57,13 +61,13 @@ export default function Homepage () {
         </CardContainer>
         <CardContainer>
           <OffsetCard>
-            <Graphic src={LogBookGraphic} alt='Log Book Graphic' />
+            <Graphic src={LogBook} alt='Log Book Graphic' />
           </OffsetCard>
           <MainCard>
             <CardHeader>Log Everything</CardHeader>
             <CardDescription>
               The act of logging provides you with the time for reflection.
-              Writting down your bugs and fixes helps you remember how to write better code.
+              Writing down your bugs and fixes helps you remember how to write better code.
             </CardDescription>
           </MainCard>
         </CardContainer>

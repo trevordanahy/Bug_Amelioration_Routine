@@ -2,9 +2,9 @@ import styled from 'styled-components'
 
 export const StyledFooter = styled.footer`
   background: ${props => props.theme.main};
-  width: 100vw;
+  width: 100%;
   height: auto;
-  border-top: 2px solid black;
+  border-top: 2px solid ${props => props.theme.darkShade};
   display:flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -25,7 +25,7 @@ export const StyledUl = styled.ul`
 `
 
 export const StyledA = styled.a`
-  color: #2B2D36;
+  color: ${props => props.theme.lightShade};
   font-size: 1em;
   margin: 10px;
 `

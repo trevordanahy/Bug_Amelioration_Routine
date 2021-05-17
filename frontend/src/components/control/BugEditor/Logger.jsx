@@ -80,7 +80,7 @@ export default function Logger ({ displayLog }) {
         </Container>
         <Container justify='start'>
           <EditorLabel htmlFor='error type'>Error Type</EditorLabel>
-          <EditorSelect id='error type' onChange={handleErrorTypeChange} value={bugIn.error_type}>
+          <EditorSelect separator id='error type' onChange={handleErrorTypeChange} value={bugIn.error_type}>
             <option />
             <option>Syntax Error</option>
             <option>Logical Error</option>

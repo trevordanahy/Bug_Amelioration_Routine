@@ -1,5 +1,5 @@
 import React from 'react'
-import GithubDark from '../../img/GithubDark.png'
+import GithubLight from '../../img/GithubLight.png'
 import {
   StyledFooter,
   LinkContainer,
@@ -30,7 +30,7 @@ export default function Footer (theme) {
       </LinkContainer>
       <ProfileContainer>
         <a href='https://github.com/trevordanahy'>
-          <Profile src={GithubDark} alt='Link to personal Github page' />
+          <Profile src={GithubLight} alt='Link to personal Github page' />
         </a>
       </ProfileContainer>
     </StyledFooter>

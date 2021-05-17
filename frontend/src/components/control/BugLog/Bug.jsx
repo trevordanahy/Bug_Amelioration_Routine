@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import * as dayjs from 'dayjs'
 import * as utc from 'dayjs/plugin/utc'
 import {
- Container, BugBar, Indicator, BugTitle,
-  RightDiv, BugDelete, DateCreated 
+  Container, BugBar, Indicator, BugTitle,
+  RightDiv, BugDelete, DateCreated
 } from '../../style/BugLog/BugStyles'
 import { deleteBug } from '../../../adapters'
 import BugCode from './BugCode'
