@@ -21,7 +21,7 @@ export const HomepageHeader = styled.h1`
 `
 export const About = styled.p`
   margin: .25rem .5rem;
-  font-size: 5vh;
+  font-size: 1.5rem;
   width: 100vw;
 `
 export const CardList = styled.div`
@@ -51,7 +51,7 @@ export const CardContainer = styled.div`
 `
 export const OffsetCard = styled.div`
   width: 70vw;
-  background: ${props => props.theme.secondaryAccent};
+  background: ${props => props.theme.lightAccent};
   height: auto;
   border: 2px solid black;
   border-radius: 15px;

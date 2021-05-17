@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import * as dayjs from 'dayjs'
 import * as utc from 'dayjs/plugin/utc'
-import { Container, BugBar, Indicator, BugTitle, BugDelete, DateCreated } from '../../style/BugLog/BugStyles'
+import {
+  Container, BugBar, Indicator, BugTitle,
+  RightDiv, BugDelete, DateCreated
+} from '../../style/BugLog/BugStyles'
 import { deleteBug } from '../../../adapters'
 import BugCode from './BugCode'
 
@@ -35,8 +38,10 @@ export default function Bug ({ entry, displayLog, selectBug }) {
       <BugBar tabIndex={0} onClick={displayCode}>
         <Indicator status={entry.is_fixed} />
         <BugTitle>{`${entry.app} | ${entry.error_type} (${entry.language})`}</BugTitle>
-        <DateCreated>{createdDate}</DateCreated>
-        <BugDelete onClick={bugDelete}><b>X</b></BugDelete>
+        <RightDiv>
+          <DateCreated>{createdDate}</DateCreated>
+          <BugDelete onClick={bugDelete}><b>X</b></BugDelete>
+        </RightDiv>
       </BugBar>
       <BugCode entry={entry} showCode={showCode} selectBug={selectBug} />
     </Container>

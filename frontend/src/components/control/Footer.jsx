@@ -1,5 +1,5 @@
 import React from 'react'
-import GithubDark from '../../img/GithubDark.png'
+import GithubLight from '../../img/GithubLight.png'
 import {
   StyledFooter,
   LinkContainer,
@@ -11,8 +11,7 @@ import {
 
 const links = [
   { title: 'Home', address: '/home' },
-  { title: 'About', address: '/about' },
-  { title: 'My Personal Site', address: 'http://trevordanahy.dev' }
+  { title: 'Personal Site', address: 'http://trevordanahy.dev' }
 ]
 
 const siteLinkList = links.map((link) => {
@@ -31,7 +30,7 @@ export default function Footer (theme) {
       </LinkContainer>
       <ProfileContainer>
         <a href='https://github.com/trevordanahy'>
-          <Profile src={GithubDark} alt='Link to personal Github page' />
+          <Profile src={GithubLight} alt='Link to personal Github page' />
         </a>
       </ProfileContainer>
     </StyledFooter>

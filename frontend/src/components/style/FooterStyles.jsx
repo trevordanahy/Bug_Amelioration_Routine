@@ -2,12 +2,17 @@ import styled from 'styled-components'
 
 export const StyledFooter = styled.footer`
   background: ${props => props.theme.main};
-  height: 60px;
   width: 100%;
+  height: auto;
+  border-top: 2px solid ${props => props.theme.darkShade};
   display:flex;
-  flex-direction: row;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  
 `
 export const LinkContainer = styled.div`
+  justify-self: flex-start;
   left: 0;
   padding-top: 10px;
   display: flex;
@@ -20,20 +25,18 @@ export const StyledUl = styled.ul`
 `
 
 export const StyledA = styled.a`
-  color: #2B2D36;
+  color: ${props => props.theme.lightShade};
+  font-size: 1em;
   margin: 10px;
 `
 
 export const ProfileContainer = styled.div`
-  position: fixed;
-  right: 5%;
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: center;
+  flex-flow: row-reverse wrap;
 `
 
 export const Profile = styled.img`
-  height: 30px;
+  height: 2em;
   width: auto;
-  margin: 5px;
+  margin: 1em;
 `

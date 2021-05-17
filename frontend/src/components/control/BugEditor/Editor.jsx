@@ -4,16 +4,11 @@ import Logger from './Logger'
 import Fixer from './Fixer'
 
 export default function Editor ({ displayLog, selectedBug, selectBug }) {
-  const handleLogNewBug = () => {
-    selectBug('')
-  }
-
   return (
     <EditorStyle>
       <SectionTitle>Editor</SectionTitle>
-      {selectedBug ? <button onClick={handleLogNewBug}>Log New Bug</button> : null}
       {selectedBug
-        ? <Fixer displayLog={displayLog} selectedBug={selectedBug} />
+        ? <Fixer displayLog={displayLog} selectedBug={selectedBug} selectBug={selectBug} />
         : <Logger displayLog={displayLog} />}
     </EditorStyle>
   )

@@ -10,11 +10,13 @@ export const Background = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 2;
 `
 
 export const Content = styled.div`
   max-height: auto;
   max-width: 50%;
+  min-width: 200px;
   position: relative;
 `
 
@@ -25,9 +27,9 @@ export const FormSelect = styled.div`
 `
 
 export const FormBttn = styled.button`
-  background-color: #2B2D36;
+  background-color: ${props => props.theme.main};
   padding: 5px;
-  color: #F9F9F8;
+  color: ${props => props.theme.lightShade};
   border: black;
   border-style: solid;
   `
@@ -38,7 +40,7 @@ export const Form = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #F4ECE7;
+  background-color: ${props => props.theme.lightShade};
   border-radius: 0px 0px 20px 20px;
   border: black;
   border-style: solid;
