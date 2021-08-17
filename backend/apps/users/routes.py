@@ -52,8 +52,18 @@ def create_token(user_id, expire_time):
             data=payload, expires=expiration["jwt"]
         )
         token = {"value": token_value, "expiration": expiration["cookie"]}
+
+        """ You're overwriting the real exception and message with an
+        HTTPException. I would either include the actual exception name/message in the 
+        HTTPException detail or create a case specifically for HTTPException,
+        and have a generic message for all other exceptions that also logs the exception type
+
+        This happens in a number of places in this file as well as backend/apps/tracker/routes.py. 
+        While relatively a minor problem on the surface, it can make debugging difficult
+        because you lose your exceptions/error messages
+        """
     except:
-        raise HTTPException(status_code=400, detail="Unable to create token")
+        raise HTTPException(status_code=400, detail=f"Unable to create token\nSystem message {sys.exc_info()[0]}")
     else:
         return token
 
